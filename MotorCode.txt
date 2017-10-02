@@ -1,0 +1,46 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 09/28/2017 05:56:35 PM
+// Design Name: 
+// Module Name: top
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+
+module top(
+
+//CLK Input
+    input CLK,
+
+//Pin Outputs
+    output RightMotorPower,
+    output RightMotorPWM,
+    output LeftMotorPower,
+    output LeftMotorPWM         
+    );
+     
+//Right Motor Power Manipulation
+    assign RightMotorPower = 1;                       // Turns RightMotorPower on
+
+    assign RightMotorPWM = 1;                       // Dictates RightMotorPWM
+    
+//Left Motor Power Manipulation
+    assign LeftMotorPower = 1;                       // Turns LeftMotorPower on
+
+//Left Motor PWM Manipulation
+    assign LeftMotorPWM = 1;                       // Dictates LeftMotorPWM
+
+endmodule
