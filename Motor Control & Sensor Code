@@ -1,0 +1,65 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 09/28/2017 05:56:35 PM
+// Design Name: 
+// Module Name: top
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+
+module top(
+
+//CLK Input
+    input CLK,
+
+//Sensor Input Pins
+    input SensorA,
+    input SensorB,
+    
+//Rover Enable Switches
+    input EnableAswitch,        
+    input EnableBswitch,
+   
+//Roverc Pin Outputs
+    //Rover Motor B Outputs
+    output In3,
+    output In4,
+    output EnableB,
+
+    //Rover Motor A Outputs
+    output In1,
+    output In2,
+    output EnableA
+    
+    );
+     
+//Motor B Direction Manipulation
+    assign In3 = (~SensorB);                    // In3 is equal to the inverse of the output of sensor B
+    
+    assign In4 = SensorB;                       // In4 is equal to the output of sensor B
+
+//Motor B Enable Manipulation
+    assign EnableB = EnableBswitch;             // Enable B is equal to the switch EnabeBswitch
+    
+//Motor A Direction Manipulation
+    assign In1 = SensorA;                       // In1 is equal to the output of sensor A
+
+    assign In2 = (~SensorA);                    // In2 is equal to the inverse of the output of sensor A
+
+//Motor A Enable Manipulation
+    assign EnableA = EnableAswitch;             // Enable A is equal to the switch EnabeAswitch
+
+endmodule
