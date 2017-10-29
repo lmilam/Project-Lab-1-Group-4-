@@ -1,0 +1,60 @@
+//This file uses Sw0,Sw1,JA1-JA4, and JA7-JA10
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 09/28/2017 05:56:35 PM
+// Design Name: 
+// Module Name: top
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+module Top
+(
+//CLK Input
+    input CLK,
+//Sensor Input Pins
+    input [1:0]Sensor,
+//Rover Enable Switches
+    input EnableAswitch,        
+    input EnableBswitch,   
+//Rover Pin Enable
+    output EnableB,
+    output EnableA,
+//Rover Input Pins
+    output [3:0]In
+ );
+    reg [3:0]temp_In;
+//Rover Input Pins
+    assign In = temp_In;    
+//Parameters
+    parameter forwards = 4'b0110;
+    //parameter [3:0]backwards={1,0,0,1},
+    parameter left = 4'b0101;
+    parameter right = 4'b1010;          
+//Motor B Enable Manipulation
+    assign EnableB = EnableBswitch;             // Enable B is equal to the switch EnabeBswitch
+//Motor A Enable Manipulation
+    assign EnableA = EnableAswitch;             // Enable A is equal to the switch EnabeAswitch
+always@(*)
+    begin
+        case(Sensor)                     // 1 2 3 4  
+            //00: In = backwards;        // 1 0 0 1
+            2'b01: temp_In = right;      // 0 1 0 1
+            2'b10: temp_In = left;       // 1 0 1 0
+            2'b11: temp_In = forwards;   // 0 1 1 0
+            default: temp_In = forwards; 
+        endcase
+    end     
+endmodule 
