@@ -1,0 +1,73 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 10/24/2017 11:55:41 AM
+// Design Name: 
+// Module Name: TwentyHz
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+
+module TwentyHz(
+
+//CLK Input
+    input CLK,
+//20 Hz input
+    input Hz,
+//LED output
+    output LED
+    );
+    
+    reg tempLED;
+    assign LED = tempLED;
+    
+    parameter on = 1;
+    parameter off = 0;
+    
+//Proof of concept. Still need frequency counter
+
+    always@(*)
+        begin
+            case(Hz)
+                0: tempLED = off;
+                1: tempLED = on;    
+                default: tempLED = off; 
+            endcase
+        end 
+ 
+   
+/*    always@(posedge Hz)
+        begin
+            case(Hz)    
+                default: tempLED = on; 
+            endcase
+        end 
+*/
+    reg SECcounter;
+    reg HzPosCounter;                
+/*
+// Frequency Counter Attempt
+    always@(posedge CLK)
+    begin
+        SECcounter = SECcounter + 1;
+    end     
+    
+    always@(posedge Hz)
+    begin
+        HzPosCounter = HzPosCounter + 1;// make counter to count edges
+    end
+*/    
+endmodule
+
